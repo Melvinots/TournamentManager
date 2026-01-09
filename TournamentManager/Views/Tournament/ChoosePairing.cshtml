@@ -1,0 +1,54 @@
+﻿@using TournamentManager.Models.Entities
+@model TournamentManager.Models.ViewModel.PairingViewModel;
+
+@{
+    ViewData["Title"] = "Choose Pairing Method";
+}
+
+<h2 class="mb-4">Choose Pairing Method</h2>
+
+<form asp-action="GetTournamentInfo" asp-controller="Tournament" method="get">
+    <div class="row">
+        <!-- Dropdown -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="pairingDropdown" class="form-label">Pairing Method</label>
+                <select asp-for="Method" asp-items="Model.MethodOptions" class="form-select"  id="pairingDropdown"></select>
+                <span asp-validation-for="Method" class="text-danger"></span>
+            <button type="submit" class="btn btn-primary mt-4">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Description Panel -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Method Description
+                </div>
+                <div class="card-body">
+                    <p id="pairingDescription" class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        const descriptions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MethodInfo));
+
+        const dropdown = document.getElementById("pairingDropdown");
+        const descriptionBox = document.getElementById("pairingDescription");
+
+        function updateDescription() {
+            const selected = dropdown.value;
+            descriptionBox.textContent = descriptions[selected];
+        }
+
+        // Initialize on page load
+        updateDescription();
+
+        // Update when selection changes
+        dropdown.addEventListener("change", updateDescription);
+    </script>
+}

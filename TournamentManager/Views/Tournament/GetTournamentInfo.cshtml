@@ -1,0 +1,23 @@
+﻿@model TournamentManager.Models.ViewModel.TournamentViewModel;
+
+<h2>Create @Model.Method Tournament</h2>
+
+<form asp-action="CreateTournament" method="post">
+
+    <div>
+        <label>Choose Type:</label>
+        <select asp-for="MethodType" asp-items="Model.MethodTypes"></select>
+    </div>
+
+    <div>
+        <label>Time Control:</label>
+        <select asp-for="TimeControl" asp-items="Model.TimeControls"></select>
+    </div>
+
+    <div>
+        <label>Number of Rounds:</label>
+        <input asp-for="Rounds" type="number" value="1" />
+    </div>
+
+    <button type="submit">Create Tournament</button>
+</form>
