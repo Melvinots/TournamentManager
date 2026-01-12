@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using TournamentManager.Models.ViewModel;
 
-namespace TournamentManager.Data.TournamentInfo
+namespace TournamentManager.Repositories
 {
-    public interface ITournamentInfo
+    public interface ITournamentRepository
     {
-        Task<string> GetPairingMethod(string group, string key);
+        Task<string> GetFormatAsync(string group, string key);
         Task<List<SelectListItem>> GetLookupAsync(string group, string key);
     }
 }

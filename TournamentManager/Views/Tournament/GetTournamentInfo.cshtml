@@ -1,12 +1,14 @@
 ﻿@model TournamentManager.Models.ViewModel.TournamentViewModel;
 
-<h2>Create @Model.Method Tournament</h2>
+<h2>Create @Model.Format Tournament</h2>
 
 <form asp-action="CreateTournament" method="post">
 
+    <input asp-for="Format" type="hidden" />
+
     <div>
         <label>Choose Type:</label>
-        <select asp-for="MethodType" asp-items="Model.MethodTypes"></select>
+        <select asp-for="FormatType" asp-items="Model.FormatTypes"></select>
     </div>
 
     <div>

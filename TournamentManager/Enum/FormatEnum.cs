@@ -1,6 +1,6 @@
 ﻿namespace TournamentManager.Enum
 {
-    public enum PairingMethod
+    public enum Format
     {
         RoundRobin,
         Swiss,

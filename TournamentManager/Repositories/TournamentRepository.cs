@@ -3,10 +3,11 @@ using TournamentManager.Models.Lookups;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using TournamentManager.Data;
 
-namespace TournamentManager.Data.TournamentInfo
+namespace TournamentManager.Repositories
 {
-    public class TournamentInfo(DbManager mgr) : ITournamentInfo
+    public class TournamentRepository(DbManager mgr) : ITournamentRepository
     {
         private readonly DbManager _mgr = mgr;
 
@@ -18,7 +19,7 @@ namespace TournamentManager.Data.TournamentInfo
             return cmd;
         }
 
-        public async Task<string> GetPairingMethod(string group, string key)
+        public async Task<string> GetFormatAsync(string group, string key)
         {
             var cmd = BuildTournamentInfoSP(group, key);
             var lookups = await _mgr.ExecuteReaderAsync<TournamentLookup>(cmd);

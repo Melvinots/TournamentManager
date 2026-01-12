@@ -1,7 +1,7 @@
 using System.Runtime;
 using TournamentManager.Data;
-using TournamentManager.Data.TournamentInfo;
 using TournamentManager.Models.appsettings;
+using TournamentManager.Repositories;
 using TournamentManager.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DbManager>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<ITournamentLookupService, TournamentLookupService>();
-builder.Services.AddScoped<ITournamentInfo, TournamentInfo>();
+builder.Services.AddScoped<ITournamentService, TournamentService>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
 builder.Services.Configure<Appsettings>(builder.Configuration);
 
 builder.Services.AddAuthentication("MyCookieAuth")

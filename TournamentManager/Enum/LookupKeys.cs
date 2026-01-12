@@ -2,9 +2,9 @@
 {
     public static class LookupKeys
     {
-        public const string Method = "Method";
-        public const string MethodType = "MethodType";
+        public const string Format = "Format";
+        public const string FormatType = "FormatType";
         public const string TimeControl = "TimeControl";
-        public const string MethodInfo = "MethodInfo";
+        public const string FormatInfo = "FormatInfo";
     }
 }

@@ -1,19 +1,18 @@
-﻿@using TournamentManager.Models.Entities
-@model TournamentManager.Models.ViewModel.PairingViewModel;
+﻿@model TournamentManager.Models.ViewModel.FormatViewModel;
 
 @{
-    ViewData["Title"] = "Choose Pairing Method";
+    ViewData["Title"] = "Select Tournament Format";
 }
 
-<h2 class="mb-4">Choose Pairing Method</h2>
+<h2 class="mb-4">Select Tournament Format</h2>
 
 <form asp-action="GetTournamentInfo" asp-controller="Tournament" method="get">
     <div class="row">
         <!-- Dropdown -->
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="pairingDropdown" class="form-label">Pairing Method</label>
-                <select asp-for="Method" asp-items="Model.MethodOptions" class="form-select"  id="pairingDropdown"></select>
+                <label for="pairingDropdown" class="form-label">Format</label>
+                <select asp-for="Method" asp-items="Model.FormatOptions" class="form-select"  id="pairingDropdown"></select>
                 <span asp-validation-for="Method" class="text-danger"></span>
             <button type="submit" class="btn btn-primary mt-4">Confirm</button>
             </div>
@@ -35,7 +34,7 @@
 
 @section Scripts {
     <script>
-        const descriptions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MethodInfo));
+        const descriptions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.FormatInfos));
 
         const dropdown = document.getElementById("pairingDropdown");
         const descriptionBox = document.getElementById("pairingDescription");
